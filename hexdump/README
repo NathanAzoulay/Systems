@@ -1,0 +1,59 @@
+Nathan Azoulay
+cssc1915
+CS 530, Spring 2020
+Assignment #1, Hexdump Program
+README
+
+--Files included--
+	- dbx.cpp
+	- dbx (executable upon compilation)
+	- makefile
+	- test.txt 
+	- README
+
+--Compile instructions--
+run make at command line within ~/a1 to get executable dbx
+
+To remove executable,
+edoras% make clean
+
+--Operating instructions--
+Within directory ~/a1 after compiled can do:
+
+For hexadecimal output,
+edoras% dbx <filename> 
+edoras% dbx test.txt
+
+For binary output,
+edoras% dbx -b <filename>
+edoras% dbx -b test.txt
+
+--Design Decisions--
+To begin, I had to read in the file through the command line instructions
+into an unsigned character array and wrote an if else to differentiate the 
+two possible outputs(hex or bin)
+
+For binary conversion, I printed the address in hex with set widths and then
+using the int() cast converted the character to a hexadecimal. My function binConv()
+takes in the hex and converts the two digits of the hex to binary using a switch statement
+and the logic that dividing by 16 will give you the least-significant digit and then 
+the modulus(%) of 16 will give the second digit. The switch statement will then evaluate
+the result of that digit and append its according binary value to the result string.
+
+For hexadecimal conversion, I printed the addresses the same way,except changed the # of bytes 
+in row variable. With same procedure, printed out human readable characters; however, used 
+the << hex function to convert the int into a hexadecimal.
+
+--Known Bugs--
+The program only accepts binary/ASCII content file types.
+
+--Lesson Learned--
+From this assignment, I have learned to read the file byte by byte and utilized new functions
+such as fseek(). I also had trouble with if statements for the binary conversion and ended up 
+using a switch statement as I couldn't get the if statements to work. It also took me a while to
+determine the proper logic of coverting the hex to binary, yet was as simple as extracting the first
+and second digit. Another bug I had for a bit was declaring my characters as signed characters 
+in function readInput() and buffer, realizing they should be unsigned.
+
+
+
